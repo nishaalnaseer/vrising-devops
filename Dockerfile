@@ -8,7 +8,7 @@ ENV APP_ID=1829350
 WORKDIR /home/dockeruser/steamcmd
 
 # Install dependencies & Wine
-RUN useradd -m dockeruser \
+RUN useradd -m -u 2500 -s /bin/bash dockeruser \
     && dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -44,6 +44,10 @@ RUN useradd -m dockeruser \
         mkdir -p /home/dockeruser/.wine \
         && chown -R dockeruser:dockeruser /home/dockeruser/.wine
 
+
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
 # Copy your V Rising server files (or mount later)
 USER dockeruser
 
@@ -53,17 +57,10 @@ RUN rm -rf ~/.wine && \
         winetricks -q dotnet48 && \
         winecfg -v win10
 
-RUN xvfb-run -a wine  ./steamcmd.exe \
-    +@sSteamCmdForcePlatformType windows \
-    +force_install_dir "C:\\VRisingServer" \
-    +login anonymous \
-    +app_update 1829350 validate \
-    +quit
-
 # Expose default ports
-EXPOSE 9876/udp
-EXPOSE 9877/udp
+#EXPOSE 9876/udp
+#EXPOSE 9877/udp
 
 # Run the server via Wine
 #CMD ["wine64", "./VRisingServer/VRisingServer.exe"]
-CMD ["sleep", "infinity"]
+CMD ["./entrypoint.sh"]

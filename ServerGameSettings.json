@@ -1,0 +1,17 @@
+{
+  "GameModeType": "PvE",
+  "CastleDamageMode": "Never",
+  "PlayerDamageMode": "Always",
+  "CastleHeartDamageMode": "CanBeDestroyedOnlyWhenDecaying",
+  "PvPVampireRespawnModifier": 1.0,
+  "DayDurationInSeconds": 1080,
+  "DayStartHour": 9,
+  "DayEndHour": 17,
+  "BloodDrainModifier": 0.5,
+  "MaterialYieldModifier": 2.0,
+  "InventoryStacksModifier": 3.0,
+  "EquipmentDurabilityModifier": 0.5,
+  "TeleportBoundItems": true,
+  "DeathContainerPermission": "ClanMembers",
+  "CanLootEnemyContainers": false
+}

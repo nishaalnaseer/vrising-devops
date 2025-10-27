@@ -1,0 +1,16 @@
+{
+  "Name": "My Cool V Rising Server",
+  "Description": "PvE | Fast Progression | Mods Allowed",
+  "Port": 9876,
+  "QueryPort": 9877,
+  "MaxConnectedUsers": 40,
+  "MaxConnectedAdmins": 4,
+  "SaveName": "world1",
+  "Password": "",
+  "Secure": true,
+  "ListOnMasterServer": true,
+  "AutoSaveCount": 40,
+  "AutoSaveInterval": 300,
+  "GameSettingsPreset": "StandardPvP",
+  "AdminOnlyDebugEvents": false
+}

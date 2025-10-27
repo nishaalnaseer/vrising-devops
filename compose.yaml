@@ -1,0 +1,10 @@
+services:
+  vrising:
+    image: vrising
+    ports:
+      - "9876:9876"
+      - "9877:9877"
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
