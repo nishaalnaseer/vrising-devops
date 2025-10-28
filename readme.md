@@ -6,7 +6,7 @@
 ## Installing Docker
 ### Install Docker from https://docs.docker.com/engine/install/debian/
 
-## Pre build
+## Building docker image
 
 ### Docker is not built for persistent data and in particular, heavy write and what you essentially want to do, if you want to be serious is to create a volume and bind it to the container
 ```bash
@@ -20,15 +20,17 @@ chown -R 2500:2500 /var/lib/docker/volumes/vrising/_data
 ```
 ### If this uid conflicts with an id on your machine you can change it in the image, but make sure to make chown it
 
-sudo docker run -itd \
-  --name vrising \
-  -p 9876:9876/udp \
-  -p 9877:9877/udp \
-  -v vrising:/home/dockeruser/persistent \
-  -v ./ServerHostSettings.json:/home/dockeruser/ServerHostSettings.json \
-  -v ./ServerGameSettings.json:/home/dockeruser/ServerGameSettings.json \
-  vrising
+## Running the service
 
-sudo docker volume create vrising
-create dirs data and logs inside vrising volume
-chown the volume
+### This should take a few minutes as this will update steam and download VRising Dedicated Server.
+```bash
+sudo docker compose up -d
+```
+### Edit ```compose.yaml```'s ```cpus:``` to a desired value as VRising with wine, xvfb and docker froze my SSH connection and other processes on host. So you might want to restrict it.
+### By default as per the current compose file it will give 2 virtual cores
+
+
+## Data
+### View logs at ```/var/lib/docker/volumes/vrising/_data/logs```
+
+### Game files at  ```/var/lib/docker/volumes/vrising/_data/data```
