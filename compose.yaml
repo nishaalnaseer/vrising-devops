@@ -2,8 +2,8 @@ services:
   vrising:
     image: vrising
     ports:
-      - "9876:9876"
-      - "9877:9877"
+      - "9876:9876/udp"
+      - "9877:9877/udp"
     deploy:
       resources:
         limits:
@@ -12,6 +12,8 @@ services:
       - vrising:/home/dockeruser/persistent
       - ./ServerHostSettings.json:/home/dockeruser/ServerHostSettings.json
       - ./ServerGameSettings.json:/home/dockeruser/ServerGameSettings.json
+    stdin_open: true  # equivalent to -i
+    tty: true         # equivalent to -t
 
 volumes:
   vrising:
