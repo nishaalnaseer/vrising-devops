@@ -20,8 +20,6 @@ chown -R 2500:2500 /var/lib/docker/volumes/vrising/_data
 ```
 ### If this uid conflicts with an id on your machine you can change it in the image, but make sure to make chown it
 
-
-
 sudo docker run -itd \
   --name vrising \
   -p 9876:9876/udp \

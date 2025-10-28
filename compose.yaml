@@ -8,3 +8,12 @@ services:
       resources:
         limits:
           cpus: "2.0"
+    volumes:
+      - vrising:/home/dockeruser/persistent
+      - ./ServerHostSettings.json:/home/dockeruser/ServerHostSettings.json
+      - ./ServerGameSettings.json:/home/dockeruser/ServerGameSettings.json
+
+volumes:
+  vrising:
+    external: true
+    name: vrising
