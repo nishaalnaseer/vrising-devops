@@ -1,4 +1,7 @@
 <h1 align="center">VRising Dedicated Server DevOps 🧛‍♀️🧛</h1>
+Whats that you dont want to run a game server on windows? Well I got just 
+the thing for you: Linux ⮕ Docker ⮕ Wine ⮕ VRISING. This won't run on WSL. 
+Don't ask me why
 
 <h2 align="center">Installing Docker 🐋</h2>
 Install Docker from https://docs.docker.com/engine/install/debian/
@@ -33,6 +36,11 @@ So you might want to restrict it.
 By default, as per the current compose file, it will give 2 virtual cores
 
 <h2 align="center">Data 💾</h2>
-View logs at ```/var/lib/docker/volumes/vrising/_data/logs```
-</br>
-Save files at  ```/var/lib/docker/volumes/vrising/_data/data```
+View logs at 
+```
+/var/lib/docker/volumes/vrising/_data/logs
+```
+Save files at  
+```
+/var/lib/docker/volumes/vrising/_data/data
+```
