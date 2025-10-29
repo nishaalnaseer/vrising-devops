@@ -7,52 +7,28 @@ ENV WINEPREFIX=/home/dockeruser/.wine
 ENV APP_ID=1829350
 WORKDIR /home/dockeruser/steamcmd
 
-# Install dependencies & Wine
-RUN useradd -m -u 2500 -s /bin/bash dockeruser \
-    && dpkg --add-architecture i386 && \
-    apt-get update && \
-    apt-get install -y --no-install-recommends \
-        wine64 \
-        wine32 \
-        wine \
+RUN useradd -m -u 2500 -s /bin/bash dockeruser && \
+    dpkg --add-architecture i386 && apt-get update && \
+    apt-get install -y wine32 wine64 wine curl \
         xvfb \
         xauth \
-        winbind \
-        cabextract \
-        unzip \
-        wget \
-        ca-certificates \
-        bash \
-        gosu \
-        libc6:i386 \
-        libgcc-s1:i386 \
-        libstdc++6:i386 \
-        libx11-6:i386 \
-        libxext6:i386 \
-        libxrender1:i386 \
-        libxrandr2:i386 \
-        libfreetype6:i386 \
-        libglu1-mesa:i386 \
-        && rm -rf /var/lib/apt/lists/* \
-        && wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip \
-        && unzip steamcmd \
-        && chown -R dockeruser:dockeruser /home/dockeruser \
-        && ln -s /usr/bin/wine64 /usr/local/bin/wine64 \
-        && wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && \
-        chmod +x winetricks && \
-        mv winetricks /usr/local/bin/ && \
-        mkdir -p /home/dockeruser/.wine \
-        && chown -R dockeruser:dockeruser /home/dockeruser/.wine && \
-        rm steamcmd.zip
+        winbind && \
+    curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf - && \
+    chmod +x steamcmd.sh && \
+    chown -R 2500:2500 /home/dockeruser && \
+    curl -o winetricks \
+    https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && \
+    chmod +x winetricks && \
+    mv winetricks /usr/local/bin/
 
-# Copy your V Rising server files (or mount later)
 USER dockeruser
 
-RUN rm -rf ~/.wine && \
-        WINEARCH=win64 WINEPREFIX=/home/dockeruser/.wine wineboot && \
-        winecfg -v win10 && \
-        winetricks -q dotnet48 && \
-        winecfg -v win10
+RUN ./steamcmd.sh \
+    +@sSteamCmdForcePlatformType windows \
+    +force_install_dir "/home/dockeruser/.wine/drive_c/vrisingserver" \
+    +login anonymous \
+    +app_update 1829350 validate \
+    +quit
 
 USER root
 COPY entrypoint.sh .
