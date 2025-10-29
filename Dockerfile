@@ -9,7 +9,7 @@ WORKDIR /home/dockeruser/steamcmd
 
 RUN useradd -m -u 2500 -s /bin/bash dockeruser && \
     dpkg --add-architecture i386 && apt-get update && \
-    apt-get install -y wine32 wine64 wine curl \
+    apt-get install -y wine64 wine curl \
         xvfb \
         xauth \
         winbind && \
