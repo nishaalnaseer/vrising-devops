@@ -42,11 +42,8 @@ RUN useradd -m -u 2500 -s /bin/bash dockeruser \
         chmod +x winetricks && \
         mv winetricks /usr/local/bin/ && \
         mkdir -p /home/dockeruser/.wine \
-        && chown -R dockeruser:dockeruser /home/dockeruser/.wine
-
-
-COPY entrypoint.sh .
-RUN chmod +x entrypoint.sh
+        && chown -R dockeruser:dockeruser /home/dockeruser/.wine && \
+        rm steamcmd.zip
 
 # Copy your V Rising server files (or mount later)
 USER dockeruser
@@ -57,10 +54,10 @@ RUN rm -rf ~/.wine && \
         winetricks -q dotnet48 && \
         winecfg -v win10
 
-# Expose default ports
-#EXPOSE 9876/udp
-#EXPOSE 9877/udp
+USER root
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
 
-# Run the server via Wine
-#CMD ["wine64", "./VRisingServer/VRisingServer.exe"]
+USER dockeruser
+
 CMD ["./entrypoint.sh"]

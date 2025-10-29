@@ -31,6 +31,5 @@ sleep 2
 
 wine "C:\\vrisingserver\\VRisingServer.exe" \
   -persistentDataPath "Z:\\home\\dockeruser\\persistent\\data" \
-  -serverName "My V Rising Server" \
   -logFile "Z:\\home\\dockeruser\\persistent\\logs\\vrising.log" \
   -nographics -batchmode
