@@ -20,8 +20,8 @@ sleep 3
 
 cd /home/dockeruser/.wine/drive_c/vrisingserver
 wine VRisingServer.exe \
-  -persistentDataPath "/home/dockeruser/persistent/data" \
-  -logFile "/home/dockeruser/persistent/logs/vrising.log" \
+  -persistentDataPath "Z:/home/dockeruser/persistent/data" \
+  -logFile "Z:/home/dockeruser/persistent/logs/vrising.log" \
   -nographics -batchmode
 
 #wine "C:\\vrisingserver\\VRisingServer.exe" \

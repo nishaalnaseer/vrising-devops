@@ -8,6 +8,12 @@ Install Docker from https://docs.docker.com/engine/install/debian/
 
 <h2 align="center">Building docker image 🛠️</h2>
 
+```bash
+sudo docker buildx build . -t vrising
+```
+
+<h2 align="center">Setting up data directories</h2>
+
 Docker is not designed for persistent data, especially heavy write
 operations. If you want to be serious about this, you should create a
 volume and bind it to the container.
@@ -37,10 +43,10 @@ By default, as per the current compose file, it will give 2 virtual cores
 
 <h2 align="center">Data 💾</h2>
 View logs at 
-```
+```bash
 /var/lib/docker/volumes/vrising/_data/logs
 ```
 Save files at  
-```
+```bash
 /var/lib/docker/volumes/vrising/_data/data
 ```
