@@ -43,10 +43,10 @@ By default, as per the current compose file, it will give 2 virtual cores
 
 <h2 align="center">Data 💾</h2>
 View logs at 
-```
+```bash
 /var/lib/docker/volumes/vrising/_data/logs
 ```
 Save files at  
-```
+```bash
 /var/lib/docker/volumes/vrising/_data/data
 ```
