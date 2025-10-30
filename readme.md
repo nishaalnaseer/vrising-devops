@@ -8,6 +8,12 @@ Install Docker from https://docs.docker.com/engine/install/debian/
 
 <h2 align="center">Building docker image 🛠️</h2>
 
+```bash
+sudo docker buildx build . -t vrising
+```
+
+<h2 align="center">Setting up data directories</h2>
+
 Docker is not designed for persistent data, especially heavy write
 operations. If you want to be serious about this, you should create a
 volume and bind it to the container.
