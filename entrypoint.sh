@@ -23,8 +23,3 @@ wine VRisingServer.exe \
   -persistentDataPath "Z:/home/dockeruser/persistent/data" \
   -logFile "Z:/home/dockeruser/persistent/logs/vrising.log" \
   -nographics -batchmode
-
-#wine "C:\\vrisingserver\\VRisingServer.exe" \
-#  -persistentDataPath "Z:\\home\\dockeruser\\persistent\\data" \
-#  -logFile "Z:\\home\\dockeruser\\persistent\\logs\\vrising.log" \
-#  -nographics -batchmode
